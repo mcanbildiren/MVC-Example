@@ -1,0 +1,43 @@
+﻿@{
+	ViewData["Title"] = "Update";
+}
+@model ProductUpdateViewModel
+<h1>Update</h1>
+
+<form asp-controller="Products" asp-action="Update" method="post">
+	<div>
+		<label asp-for="CategoryId" class="form-label">Category</label>
+		<select class="form-select" asp-items="@ViewBag.selectList" asp-for="CategoryId">
+		</select>
+	</div>
+
+	<input type="hidden" asp-for="Id" />
+	<div class="mb-3">
+		<label asp-for="Name" class="form-label">Ürün Ad :</label>
+		<input class="form-control" asp-for="Name">
+		<span class="text-danger" asp-validation-for="Name"></span>
+
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Price" class="form-label">Ürün Fiyat :</label>
+		<input class="form-control" asp-for="Price">
+		<span class="text-danger" asp-validation-for="Price"></span>
+	</div>
+
+
+	<div class="mb-3">
+		<label asp-for="Color" class="form-label">Ürün Renk :</label>
+		<input class="form-control" asp-for="Color">
+		<span class="text-danger" asp-validation-for="Color"></span>
+	</div>
+
+
+	<button type="submit" class="btn btn-primary">Ürün Güncelle</button>
+</form>
+
+	@section Scripts
+	{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+	}

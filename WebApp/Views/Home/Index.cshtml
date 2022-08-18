@@ -1,0 +1,19 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	<a class="btn btn-primary" asp-controller="Products" asp-action="DoSomething" asp-route-page=1 asp-route-pageSize=10>Product DoeSomething'e git</a>
+	<a class="btn btn-primary" asp-controller="ModelBinding" asp-action="DoSomething" asp-route-page=1 asp-route-pageSize=10>ModelBinding DoeSomething'e git</a>
+	<a class="btn btn-primary" asp-controller="Home" asp-action="About">Hakkımızda</a>
+	<a class="btn btn-primary" asp-route="productLink" asp-route-name="kalem" asp-route-color="mavi" asp-route-stock=1>Ürünler</a>
+	<a class="btn btn-primary" asp-controller="Home" asp-action="Page" asp-route-name="kalem" asp-route-stock=1>Sayfa</a>
+	<a class="btn btn-primary" asp-controller="Home" asp-action="ConstraintPage" asp-route-productId=1>Constraint</a>
+	<a class="btn btn-primary" asp-controller="Home" asp-action="ConstraintPage" asp-route-productId=20>Constraint2</a>
+</div>
+
+<form asp-route="productLink" asp-route="productLink" asp-route-name="kalem" asp-route-color="mavi" asp-route-stock=1 asp-route-productId=10>
+	<input type="text" name="categoryName" />
+	<input type="submit" value="Gönder" />
+</form>

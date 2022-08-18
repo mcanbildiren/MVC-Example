@@ -1,0 +1,49 @@
+﻿@{
+	ViewData["Title"] = "Create";
+}
+
+<h1>@TempData["name"]</h1>
+@model ProductCreateViewModel
+<form asp-controller="Products" asp-action="Create" method="post">
+	<div>
+		<label asp-for="CategoryId" class="form-label">Category</label>
+		<select class="form-select" asp-items="@ViewBag.selectList" asp-for="CategoryId">
+		</select>
+	</div>
+
+
+	<div class="mb-3">
+		<label asp-for="Name" class="form-label">Ürün Ad :</label>
+		<input class="form-control" asp-for="Name">
+		<span class="text-danger" asp-validation-for="Name"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Price" class="form-label">Ürün Fiyat :</label>
+		<input class="form-control" asp-for="Price">
+		<span class="text-danger" asp-validation-for="Price"></span>
+	</div>
+
+
+	<div class="mb-3">
+		<label asp-for="Color" class="form-label">Ürün Renk :</label>
+		<input class="form-control" asp-for="Color">
+		<span class="text-danger" asp-validation-for="Color"></span>
+
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" asp-for="IsPublish">
+		<label class="form-check-label" asp-for="IsPublish">
+			Yayınlansın mı ?
+		</label>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Ürün Oluştur</button>
+</form>
+
+
+@section Scripts
+	{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+	}
