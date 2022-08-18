@@ -1,13 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Index";
+﻿@using AutoMapper
+@using WebApp.Repositories
+@inject IProductRepository _productRepository
+@inject IMapper _mapper
 
-
+@{
+	var products = _mapper.Map<List<ProductViewModel>>(_productRepository.GetAll());
 }
-@model IndexPageViewModel
-
-<a asp-controller="Products" asp-action="Create" class="btn btn-primary">Ürün Ekle</a>
-
-<h1>@Model.TableName </h1>
 
 <table class="table">
 	<thead>
@@ -22,7 +20,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model.Products)
+		@foreach (var item in products)
 		{
 			<tr>
 				<td>@item.Id</td>

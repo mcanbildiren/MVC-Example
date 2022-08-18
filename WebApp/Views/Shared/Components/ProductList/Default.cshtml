@@ -1,0 +1,44 @@
+﻿@model List<ProductViewModel>
+
+<h1>Ürünler</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>İsim</th>
+            <th>Fiyat</th>
+            <th>Renk</th>
+            <th>Yayın durumu</th>
+            <th>Kategori</th>
+            <th></th>
+        </tr>
+
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+
+                <td>@item.Color</td>
+                <td>
+
+                    <input class="form-check-input" type="checkbox" disabled @(item.IsPublish ? "checked" : "")>
+
+                </td>
+                <td>@item.Category.Name</td>
+                <td>
+                    <a asp-controller="Products" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+                    <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>

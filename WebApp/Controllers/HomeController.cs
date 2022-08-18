@@ -1,16 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.Models;
+using WebApp.Models.ViewModels;
+using WebApp.Repositories;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductRepository productRepository, IMapper mapper)
         {
             _logger = logger;
+            _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -69,6 +76,8 @@ namespace WebApp.Controllers
         [Route("Hakkimizda")]
         public IActionResult About()
         {
+            ViewBag.productList = _mapper.Map<List<ProductViewModel>>(_productRepository.GetAll());
+
             return View();
         }
 
@@ -82,6 +91,7 @@ namespace WebApp.Controllers
         
         public IActionResult Page(int stock, string name)
         {
+            ViewBag.productList = _mapper.Map<List<ProductViewModel>>(_productRepository.GetAll());
             return View();
         }
 

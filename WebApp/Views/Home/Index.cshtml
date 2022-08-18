@@ -2,7 +2,13 @@
 	ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+@await Component.InvokeAsync("ProductList")
+
+<vc:product-list type="0"></vc:product-list>
+
+<vc:product-list type="1"></vc:product-list>
+
+<div class="text-center mb-3">
 	<h1 class="display-4">Welcome</h1>
 	<a class="btn btn-primary" asp-controller="Products" asp-action="DoSomething" asp-route-page=1 asp-route-pageSize=10>Product DoeSomething'e git</a>
 	<a class="btn btn-primary" asp-controller="ModelBinding" asp-action="DoSomething" asp-route-page=1 asp-route-pageSize=10>ModelBinding DoeSomething'e git</a>
@@ -13,7 +19,7 @@
 	<a class="btn btn-primary" asp-controller="Home" asp-action="ConstraintPage" asp-route-productId=20>Constraint2</a>
 </div>
 
-<form asp-route="productLink" asp-route="productLink" asp-route-name="kalem" asp-route-color="mavi" asp-route-stock=1 asp-route-productId=10>
+<form asp-route="productLink" asp-route="productLink" asp-route-name="kalem" asp-route-color="mavi" asp-route-stock=1 asp-route-productId=10 method="post">
 	<input type="text" name="categoryName" />
 	<input type="submit" value="Gönder" />
 </form>
