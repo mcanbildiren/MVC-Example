@@ -2,6 +2,18 @@
 	ViewData["Title"] = "Home Page";
 }
 
+
+<product-list products="@ViewBag.products"></product-list>
+
+
+<custom-italic>qwe asd zxc</custom-italic>
+
+<product-show product="@ViewBag.product"></product-show>
+
+<thumbnail-image  image-src="/images/araba.small.jpg"></thumbnail-image>
+
+
+
 @await Component.InvokeAsync("ProductList")
 
 <vc:product-list type="0"></vc:product-list>

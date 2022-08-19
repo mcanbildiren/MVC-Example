@@ -21,6 +21,8 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
 
+
+
             var products = _productRepository.GetAll();
 
             var tableName = "Ürünler";
@@ -29,11 +31,12 @@ namespace WebApp.Controllers
             // return View(Tuple.Create(products, tableName));
 
             //2.yol
-            // return View((products,tableName));
+            // return View((products, tableName));
 
             var productListViewModel = _mapper.Map<List<ProductViewModel>>(products);
 
             return View(new IndexPageViewModel() { Products = productListViewModel, TableName = tableName });
+
         }
 
         [HttpGet]

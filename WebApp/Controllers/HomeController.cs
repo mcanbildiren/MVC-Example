@@ -22,7 +22,9 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.product = _mapper.Map<ProductViewModel>(_productRepository.GetById(6));
 
+            ViewBag.products = _mapper.Map<List<ProductViewModel>>(_productRepository.GetAll());
 
             ViewData["Title"] = "Home Page";
             return View();
