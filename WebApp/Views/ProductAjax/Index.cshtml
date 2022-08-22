@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            loadProduct();
+            $("#SaveProduct").click(function(){
+                var newProduct={name:"kalem 20",price:20,color:"mavi",categoryId:1,isPublish:1};
+                $.ajax({
+                    type: "Post",
+                    data:newProduct,
+                    url: "/productajax/SaveProduct",
+                    success: function (result) {
+                        console.log(result);
+                        loadProduct();
+                        
+                    }
+                })
+            })
+ function loadProduct()
+ {
+                $("#productListWrapper").empty();
+                $.ajax({
+                    type: "Get",
+                    url: "/productajax/GetProductList",
+                    success: function (result) {
+                        console.log(result);
+                        let htmlData = "<ul>";
+                        $.each(result, (function (index, item) {
+                            htmlData += `<li>${item.id}  ${item.name}</li>`;
+                        }));
+                        htmlData += "</ul>"
+                        $("#productListWrapper").append(htmlData);
+                    }
+                })
+ }
+          
+        })
+    </script>
+}
+
+<button id="SaveProduct">Kaydet</button>
+    <div id="productListWrapper">
+    </div>

@@ -19,6 +19,21 @@ namespace WebApp.Controllers
             _mapper = mapper;
         }
 
+        public IActionResult ProductListWithPaging(int page, int pageSize)
+        {
+            ViewBag.page = page;
+
+
+            var productWithPaged = _productRepository.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            var totalCount = _productRepository.GetAll().Count;
+
+
+
+            return View((productWithPaged, totalCount));
+
+        }
+
         public IActionResult Index()
         {
 

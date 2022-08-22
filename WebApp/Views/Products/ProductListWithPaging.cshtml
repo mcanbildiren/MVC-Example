@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "ProductListWithPaging";
+}
+
+<h1>ProductListWithPaging</h1>
+
+
+// producs/page/15
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+        <li class="page-item @(ViewBag.Page==1 ? "" : "")"><a class="page-link" href="#">Previous</a></li>
+
+    @*   @foreach (var item in collection)
+        {
+            <li class="page-item"><a asp-controller="" asp-action="" asp-route-page="1" asp-route-pagesize="10" class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        }*@
+
+
+
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav> 

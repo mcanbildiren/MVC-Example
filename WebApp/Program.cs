@@ -2,6 +2,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using WebApp.Filters;
+using WebApp.Middlewares;
 using WebApp.Models;
 using WebApp.Repositories;
 
@@ -39,6 +40,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseMiddleware<LogMiddleware>();
+
+
+app.MapControllerRoute(
+  name: "areas",
+  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
 
 app.MapControllerRoute(
     name: "default",

@@ -51,5 +51,17 @@ namespace WebApp.Repositories
         {
             return _context.Products.Any(predicate);
         }
+        public (List<Product>, int) GetProductsWithPaged(int page, int pageSize)
+        {
+
+            var product = _context.Products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var totalCount = _context.Products.Count();
+
+
+            return (product, totalCount);
+
+
+        }
+
     }
 }
