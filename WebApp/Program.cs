@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Filters;
 using WebApp.Models;
 using WebApp.Repositories;
 
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.AddScoped<NotFoundFilter>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

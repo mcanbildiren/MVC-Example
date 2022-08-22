@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebApp.Filters;
 using WebApp.Models;
 using WebApp.Models.ViewModels;
 using WebApp.Repositories;
@@ -81,6 +82,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(NotFoundFilter))]
         public IActionResult Update(ProductUpdateViewModel request)
         {
 
@@ -97,6 +99,7 @@ namespace WebApp.Controllers
             return RedirectToAction(nameof(HomeController.Index));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         public IActionResult Delete(int id)
         {
             _productRepository.Delete(id);
